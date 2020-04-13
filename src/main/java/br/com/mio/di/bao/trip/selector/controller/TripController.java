@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,10 @@ public class TripController {
     @ResponseStatus(value = HttpStatus.CREATED)
 	public Trip create(@RequestBody Trip trip) throws URISyntaxException {
 		return tripService.create(trip);
+	}
+	
+	@GetMapping("/best-route/{from}/{to}")
+	public String bestRoute(@PathVariable("from") String from, @PathVariable("to") String to) throws IOException {
+		return tripService.bestRoute(from, to);
 	}
 }
