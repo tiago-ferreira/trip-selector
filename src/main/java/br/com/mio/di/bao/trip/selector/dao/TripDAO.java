@@ -10,14 +10,10 @@ import br.com.mio.di.bao.trip.selector.model.Trip;
 @Component
 public class TripDAO {
 
-	private List<Trip> trips = new CopyOnWriteArrayList<>();
+	private final List<Trip> trips = new CopyOnWriteArrayList<>();
 	
 	public void add(Trip trip) {
 		trips.add(trip);
-	}
-	
-	public void set(List<Trip> trips) {
-		this.trips = trips;
 	}
 	
 	public List<Trip> get() {

@@ -1,11 +1,16 @@
 package br.com.mio.di.bao.trip.selector.controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mio.di.bao.trip.selector.model.Trip;
@@ -21,5 +26,11 @@ public class TripController {
 	@GetMapping
 	public List<Trip> list() throws IOException {
 		return tripService.listTrips();
+	}
+	
+	@PostMapping
+    @ResponseStatus(value = HttpStatus.CREATED)
+	public Trip create(@RequestBody Trip trip) throws URISyntaxException {
+		return tripService.create(trip);
 	}
 }

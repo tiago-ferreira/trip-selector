@@ -14,7 +14,9 @@ public class TripConverter {
 	private String characterToSplit;
 
 	public Trip convert(String line) {
+		System.out.println(line);
 		String[] values = line.split(characterToSplit);
+		System.out.println("from: "+values[0]+", to: "+values[1]+", price: "+values[2]);
 		return new Trip(values[0], values[1], new BigDecimal(values[2]));
 	}
 }
