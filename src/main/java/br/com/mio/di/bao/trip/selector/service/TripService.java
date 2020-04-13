@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.jgrapht.Graph;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.interfaces.ShortestPathAlgorithm.SingleSourcePaths;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -23,9 +24,6 @@ import br.com.mio.di.bao.trip.selector.util.FileWriter;
 @Service
 public class TripService {
 
-//	@Autowired
-//	private TripDAO tripDAO;
-	
 	@Autowired
 	private FileReader fileReader;
 	
@@ -67,7 +65,10 @@ public class TripService {
 		});
         DijkstraShortestPath<String, DefaultWeightedEdge> dijkstra = new DijkstraShortestPath<>(directedGraph);
         SingleSourcePaths<String, DefaultWeightedEdge> iPaths = dijkstra.getPaths(from);
-		return iPaths.getPath(to).toString();
+        GraphPath<String, DefaultWeightedEdge> path = iPaths.getPath(to);
+        StringBuilder toReturn = new StringBuilder();
+        toReturn.append(path.toString()).append(" -> ").append(path.getWeight());
+        return toReturn.toString();
 	}
 
 
