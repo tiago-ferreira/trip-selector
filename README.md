@@ -1,8 +1,11 @@
 ### Trip Selector
 
+
+## Pacotes classes java
 ```
 $ tree .
-. package base br.com.mio.di.bao.trip.selector
+. src/main/java
+. base br.com.mio.di.bao.trip.selector
 ├── default
 │   └── TripSelectorApplication.java -> Classe utlizada para iniciar a aplicação e subir o contexto do Spring Boot
 ├── config 
@@ -19,3 +22,29 @@ $ tree .
 │   └── FileReader.java -> Classe utilitária para leitura de arquivo.
 │   └── FileWriter.java -> Classe utilitária para escrita em arquivo.
 ```
+
+## Pacotes resources java
+. src/main/java
+. application.properties
+
+### Propriedades 
+
+```properties character.to.split=,  ``` -> Ao fazer a leitura do arquivo de entrada, indica qual caracter vai ser usado para separar a String e montar um objeto java
+
+- **As 2 propriedades abaixo trabalham em conjunto, caso queira ler o arquivo de entrada em um diretório local da máquina, preciso adicionar a primeira propriedade como false e na segunda colocar o caminho completo do diretório da máquina seguido com o nome do arquivo**
+
+
+#### Lendo a partir diretório local da máquina
+```properties
+trip.file.is.on.the.aplication.resources=false
+trip.file.path=/home/tiago/Downloads/test-backend/input-file.txt
+```
+
+#### Lendo a partir do resources da aplicação
+
+
+```properties 
+trip.file.is.on.the.aplication.resources=true 
+trip.file.path=input-file.txt
+```
+
