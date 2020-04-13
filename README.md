@@ -48,11 +48,16 @@ trip.file.is.on.the.aplication.resources=true
 trip.file.path=input-file.txt
 ```
 
+## Solução proposta
+
+Para a resulução do cálculo da menor rota possível, foi utlizado a teoria de grafos, baseada em uma lista de adjacência. Para a definição do resultado foi utilizado o algoritmo de Dijkstra para efetuar o calculo de acordo com peso informado para as arestas na construção do grafo.
+
+
 ## Executar
 
 ### Pré Requisitos
 
-- Java 13 instalado [Java 13](https://openjdk.java.net/projects/jdk/13/)
+- Java 13 [Java 13](https://openjdk.java.net/projects/jdk/13/)
 - Maven [Maven](http://maven.apache.org/)
 
 ### Passos para execução
@@ -65,3 +70,37 @@ Fazer o download dos fontes, entrar no diretório do projeto e executar os segui
 A aplicação irá iniciar em http://localhost:8080
 
 ## Documentação da API
+
+A documentação da API pode ser encontrada ao iniciar a aplicação e acessar a seguinte url.
+
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+Atraves da página da documentação conseguimos visualizar os metodos expostos pela API, modelo de entrada, bem como uma breve descrição sobre o funcionamento dos mesmos.
+
+
+Atraves da página do swagger é possivel entrar em algum endpoint exposto e 
+
+### Exemplo de uso 
+
+- Calculo da menor rota entre GRU - CGD
+    - Method   **GET**
+    - Content-type **aplication/json**
+    - http://localhost:8080/trips/best-route/GRU/CDG
+
+- Listar os dados da rota nos arquivos de entrada
+    - Method   **GET**
+    - Content-type **aplication/json**
+    - http://localhost:8080/trips
+
+- Inserir nova rota no arquivo de entrada
+    - Method   **POST**
+    - Content-type **aplication/json**
+    - http://localhost:8080/trips
+    - Body
+    ```json
+        {
+            "from": "BRC",
+            "to": "JOB",
+            "price": 13
+        }
+    ```
