@@ -48,3 +48,20 @@ trip.file.is.on.the.aplication.resources=true
 trip.file.path=input-file.txt
 ```
 
+## Executar
+
+### Pré Requisitos
+
+- Java 13 instalado [Java 13](https://openjdk.java.net/projects/jdk/13/)
+- Maven [Maven](http://maven.apache.org/)
+
+### Passos para execução
+
+Fazer o download dos fontes, entrar no diretório do projeto e executar os seguintes comandos 
+
+- mvn clean install package
+- mvn spring-boot:run
+
+A aplicação irá iniciar em http://localhost:8080
+
+## Documentação da API
