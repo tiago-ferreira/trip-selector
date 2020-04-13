@@ -65,10 +65,15 @@ public class TripService {
 		});
         DijkstraShortestPath<String, DefaultWeightedEdge> dijkstra = new DijkstraShortestPath<>(directedGraph);
         SingleSourcePaths<String, DefaultWeightedEdge> iPaths = dijkstra.getPaths(from);
-        GraphPath<String, DefaultWeightedEdge> path = iPaths.getPath(to);
+        GraphPath<String, DefaultWeightedEdge> resultGraph = iPaths.getPath(to);
+        return createResult(resultGraph);
+	}
+
+
+	private String createResult(GraphPath<String, DefaultWeightedEdge> graph) {
         StringBuilder toReturn = new StringBuilder();
-        toReturn.append(path.toString()).append(" -> ").append(path.getWeight());
-        return toReturn.toString();
+        toReturn.append(graph.toString()).append(" -> ").append(graph.getWeight());
+		return toReturn.toString();
 	}
 
 
